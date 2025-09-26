@@ -1,0 +1,59 @@
+Policy_Name,Value,Label,
+School Closing,0,No Measures,0 - no measures
+School Closing,1,Recommend Closing Or All Schools Open With Alterations Resulting In Significant Differences Compared To Non,1 - recommend closing or all schools open with alterations resulting in significant differences compared to non-Covid-19 operations
+School Closing,2,"Require Closing (Only Some Levels Or Categories, Eg Just High School, Or Just Public Schools)","2 - require closing (only some levels or categories, eg just high school, or just public schools)"
+School Closing,3,Require Closing All Levels,3 - require closing all levels
+Workspace Closing,0,No Measures,0 - no measures
+Workspace Closing,1,Recommend Closing (Or Recommend Work From Home) Or All Businesses Open With Alterations Resulting In Significant Differences Compared To Non,1 - recommend closing (or recommend work from home) or all businesses open with alterations resulting in significant differences compared to non-Covid-19 operation
+Workspace Closing,2,Require Closing (Or Work From Home) For Some Sectors Or Categories Of Workers,2 - require closing (or work from home) for some sectors or categories of workers
+Workspace Closing,3,Require Closing (Or Work From Home) For All,"3 - require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors)"
+Cancel Public Events,0,No Measures,0 - no measures
+Cancel Public Events,1,Recommend Cancelling,1 - recommend cancelling
+Cancel Public Events,2,Require Cancelling,2 - require cancelling
+Restrictions On Gatherings,0,No Restrictions,0 - no restrictions
+Restrictions On Gatherings,1,Restrictions On Very Large Gatherings (The Limit Is Above 1000 People),1 - restrictions on very large gatherings (the limit is above 1000 people)
+Restrictions On Gatherings,2,Restrictions On Gatherings Between 101,2 - restrictions on gatherings between 101-1000 people
+Restrictions On Gatherings,3,Restrictions On Gatherings Between 11,3 - restrictions on gatherings between 11-100 people
+Restrictions On Gatherings,4,Restrictions On Gatherings Of 10 People Or Less,4 - restrictions on gatherings of 10 people or less
+Close Public Transport,0,No Measures,0 - no measures
+Close Public Transport,1,Recommend Closing (Or Significantly Reduce Volume/Route/Means Of Transport Available),1 - recommend closing (or significantly reduce volume/route/means of transport available)
+Close Public Transport,2,Require Closing (Or Prohibit Most Citizens From Using It),2 - require closing (or prohibit most citizens from using it)
+Stay At Home Requirements,0,No Measures,0 - no measures
+Stay At Home Requirements,1,Recommend Not Leaving House,1 - recommend not leaving house
+Stay At Home Requirements,2,"Require Not Leaving House With Exceptions For Daily Exercise, Grocery Shopping, And 'Essential' Trips","2 - require not leaving house with exceptions for daily exercise, grocery shopping, and 'essential' trips"
+Stay At Home Requirements,3,"Require Not Leaving House With Minimal Exceptions (Eg Allowed To Leave Once A Week, Or Only One Person Can Leave At A Time, Etc)","3 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc)"
+Restrictions On Internal Movement,0,No Measures,0 - no measures
+Restrictions On Internal Movement,1,Recommend Not To Travel Between Regions/Cities,1 - recommend not to travel between regions/cities
+Restrictions On Internal Movement,2,Internal Movement Restrictions In Place,2 - internal movement restrictions in place
+International Travel Controls,0,No Restrictions,0 - no restrictions
+International Travel Controls,1,Screening Arrivals,1 - screening arrivals
+International Travel Controls,2,Quarantine Arrivals From Some Or All Regions,2 - quarantine arrivals from some or all regions
+International Travel Controls,3,Ban Arrivals From Some Regions,3 - ban arrivals from some regions
+International Travel Controls,4,Ban On All Regions Or Total Border Closure,4 - ban on all regions or total border closure
+Income Support,0,No Income Support,0 - no income support
+Income Support,1,"Government Is Replacing Less Than 50% Of Lost Salary (Or If A Flat Sum, It Is Less Than 50% Median Salary)","1 - government is replacing less than 50% of lost salary (or if a flat sum, it is less than 50% median salary)"
+Income Support,2,"Government Is Replacing 50% Or More Of Lost Salary (Or If A Flat Sum, It Is Greater Than 50% Median Salary)","2 - government is replacing 50% or more of lost salary (or if a flat sum, it is greater than 50% median salary)"
+Debt Relief,0,No Debt/Contract Relief,0 - no debt/contract relief
+Debt Relief,1,"Narrow Relief, Specific To One Kind Of Contract","1 - narrow relief, specific to one kind of contract"
+Debt Relief,2,Broad,2 - broad
+Public Information Campaigns,0,No Covid,0 - no Covid-19 public information campaign
+Public Information Campaigns,1,Public Officials Urging Caution About Covid,1 - public officials urging caution about Covid-19
+Public Information Campaigns,2,Coordinated Public Information Campaign (Eg Across Traditional And Social Media),2- coordinated public information campaign (eg across traditional and social media)
+Testing Policy,0,No Testing Policy,0 - no testing policy
+Testing Policy,1,"Only Those Who Both (A) Have Symptoms And (B) Meet Specific Criteria (Eg Key Workers, Admitted To Hospital, Came Into Contact With A Known Case, Returned From Overseas)","1 - only those who both (a) have symptoms AND (b) meet specific criteria (eg key workers, admitted to hospital, came into contact with a known case, returned from overseas)"
+Testing Policy,2,Testing Of Anyone Showing Covid,2 - testing of anyone showing Covid-19 symptoms
+Testing Policy,3,"Open Public Testing (Eg ""Drive Through"" Testing Available To Asymptomatic People)","3 - open public testing (eg ""drive through"" testing available to asymptomatic people)"
+Contact Tracing,0,No Contact Tracing,0 - no contact tracing
+Contact Tracing,1,Limited Contact Tracing; Not Done For All Cases,1 - limited contact tracing; not done for all cases
+Contact Tracing,2,Comprehensive Contact Tracing; Done For All Identified Cases,2 - comprehensive contact tracing; done for all identified cases
+Facial Coverings,0,No Policy,0 - No policy
+Facial Coverings,1,Recommended,1 - Recommended
+Facial Coverings,2,"Required In Some Specified Shared/Public Spaces Outside The Home With Other People Present, Or Some Situations When Social Distancing Not Possible","2 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible"
+Facial Coverings,3,Required In All Shared/Public Spaces Outside The Home With Other People Present Or All Situations When Social Distancing Not Possible,3 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible
+Facial Coverings,4,Required Outside The Home At All Times Regardless Of Location Or Presence Of Other People,4 - Required outside the home at all times regardless of location or presence of other people
+Vaccination Policy,0,No Availability,0 - No availability
+Vaccination Policy,1,Availability For One Of Following: Key Workers/ Clinically Vulnerable Groups (Non Elderly) / Elderly Groups,1 - Availability for ONE of following: key workers/ clinically vulnerable groups (non elderly) / elderly groups
+Vaccination Policy,2,Availability For Two Of Following: Key Workers/ Clinically Vulnerable Groups (Non Elderly) / Elderly Groups,2 - Availability for TWO of following: key workers/ clinically vulnerable groups (non elderly) / elderly groups
+Vaccination Policy,3,Availability For All Of Following: Key Workers/ Clinically Vulnerable Groups (Non Elderly) / Elderly Groups,3 - Availability for ALL of following: key workers/ clinically vulnerable groups (non elderly) / elderly groups
+Vaccination Policy,4,Availability For All Three Plus Partial Additional Availability (Select Broad Groups/Ages),4 - Availability for all three plus partial additional availability (select broad groups/ages)
+Vaccination Policy,5,Universal Availability,5 - Universal availability
