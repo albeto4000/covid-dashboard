@@ -1,0 +1,35 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 9/10/2025 8:23:57 PM.
+queryGroup 'Query Errors - 9/10/2025 8:23:57 PM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBI_QueryOrder = ["cases_deaths","countries","vaccinations_global","countries_coordinates","hospital","oxcgrt_policy","oxcgrt_codes","FolderPath"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_528b2807-e9f1-4698-a324-40171cb76f90
+ref table cases_deaths
+ref table countries
+ref table vaccinations_global
+ref table Country_Comparison_Filter
+ref table _Measures
+ref table Metric_Filter
+ref table hospital
+ref table DateTable
+ref table LocalDateTable_902cf98e-004e-4ca6-97ef-abce9a2dfeb4
+ref table LocalDateTable_c190f750-cfa2-4229-8f6a-590057e84272
+ref table oxcgrt_policy
+ref table oxcgrt_codes
+
+ref cultureInfo en-US
+

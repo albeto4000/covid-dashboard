@@ -1,0 +1,402 @@
+table cases_deaths
+	lineageTag: 603d87cd-9a74-4764-b2f5-9aef57be967c
+
+	column country
+		dataType: string
+		lineageTag: 35811fe7-e0c7-4881-a114-0fcea5ce8104
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ddf20dfc-2ac5-4220-8e7d-afc925aba9d9
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column new_cases
+		dataType: int64
+		formatString: 0
+		lineageTag: 63affdd6-fb4b-4d25-b6e7-b14d1a95ad1e
+		summarizeBy: sum
+		sourceColumn: new_cases
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_cases
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c1f7ccf-48b8-4f01-b133-6d1f464f2739
+		summarizeBy: sum
+		sourceColumn: total_cases
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_deaths
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a1a1af1-a193-48e0-bc4d-9dabf16c1c26
+		summarizeBy: sum
+		sourceColumn: new_deaths
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_deaths
+		dataType: int64
+		formatString: 0
+		lineageTag: 30e11a5f-521f-46a3-a117-a7b5e56ab6ab
+		summarizeBy: sum
+		sourceColumn: total_deaths
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_cases
+		dataType: int64
+		formatString: 0
+		lineageTag: d1f5ab23-ff8f-4400-a004-0668804bee23
+		summarizeBy: sum
+		sourceColumn: weekly_cases
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_deaths
+		dataType: int64
+		formatString: 0
+		lineageTag: 525a50cb-43f8-484d-8673-eab1cb89ab1a
+		summarizeBy: sum
+		sourceColumn: weekly_deaths
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_pct_growth_cases
+		dataType: double
+		lineageTag: 8429d721-9878-4452-ab34-787a9a874166
+		summarizeBy: sum
+		sourceColumn: weekly_pct_growth_cases
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weekly_pct_growth_deaths
+		dataType: double
+		lineageTag: 5c654f14-413a-4de2-8b9f-8cf1d952595c
+		summarizeBy: sum
+		sourceColumn: weekly_pct_growth_deaths
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column biweekly_cases
+		dataType: int64
+		formatString: 0
+		lineageTag: 57302709-36c9-4989-9085-5e758102d918
+		summarizeBy: sum
+		sourceColumn: biweekly_cases
+
+		annotation SummarizationSetBy = Automatic
+
+	column biweekly_deaths
+		dataType: int64
+		formatString: 0
+		lineageTag: d54c6916-0164-4671-a122-a7d2e558978b
+		summarizeBy: sum
+		sourceColumn: biweekly_deaths
+
+		annotation SummarizationSetBy = Automatic
+
+	column biweekly_pct_growth_cases
+		dataType: double
+		lineageTag: 6a7df74e-905c-49bd-b84f-be5cdb6deff4
+		summarizeBy: sum
+		sourceColumn: biweekly_pct_growth_cases
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column biweekly_pct_growth_deaths
+		dataType: double
+		lineageTag: 23110d0d-1e87-48e5-80a1-10466408b865
+		summarizeBy: sum
+		sourceColumn: biweekly_pct_growth_deaths
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_cases_per_million
+		dataType: double
+		lineageTag: 07ce9aad-ab7b-49ee-95d3-fb2bd15cff23
+		summarizeBy: sum
+		sourceColumn: new_cases_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_deaths_per_million
+		dataType: double
+		lineageTag: a58883c9-b1fe-4011-86b5-b48ed43dd01b
+		summarizeBy: sum
+		sourceColumn: new_deaths_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_cases_per_million
+		dataType: double
+		lineageTag: bfa0273a-450d-49e5-be00-cadc775957bd
+		summarizeBy: sum
+		sourceColumn: total_cases_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_deaths_per_million
+		dataType: double
+		lineageTag: 55c15e95-c0e2-4bc9-a23d-a02a99add75a
+		summarizeBy: sum
+		sourceColumn: total_deaths_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weekly_cases_per_million
+		dataType: double
+		lineageTag: 77adc4d4-22ba-42c2-a6f1-5f4478985534
+		summarizeBy: sum
+		sourceColumn: weekly_cases_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weekly_deaths_per_million
+		dataType: double
+		lineageTag: 0b8a3134-771d-4238-be69-6d8a57d4872a
+		summarizeBy: sum
+		sourceColumn: weekly_deaths_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column biweekly_cases_per_million
+		dataType: double
+		lineageTag: eb170b0f-2beb-4478-9edd-f25464aabd11
+		summarizeBy: sum
+		sourceColumn: biweekly_cases_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column biweekly_deaths_per_million
+		dataType: double
+		lineageTag: d33c601f-d743-48fe-844c-08167e9bce14
+		summarizeBy: sum
+		sourceColumn: biweekly_deaths_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_deaths_per_100k
+		dataType: double
+		lineageTag: 80fc3c3e-dfaf-437b-8c51-aef101bae618
+		summarizeBy: sum
+		sourceColumn: total_deaths_per_100k
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_deaths_per_100k
+		dataType: double
+		lineageTag: e34fc289-4c6d-4f6e-8497-20ce488f15a0
+		summarizeBy: sum
+		sourceColumn: new_deaths_per_100k
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_cases_7_day_avg_right
+		dataType: double
+		lineageTag: 5a38034f-833c-4532-aadd-f25c839135c0
+		summarizeBy: sum
+		sourceColumn: new_cases_7_day_avg_right
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_deaths_7_day_avg_right
+		dataType: double
+		lineageTag: 0a0d08fa-e7b1-4def-b678-6e925d1e6d8e
+		summarizeBy: sum
+		sourceColumn: new_deaths_7_day_avg_right
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_cases_per_million_7_day_avg_right
+		dataType: double
+		lineageTag: b51e5d27-d6e7-4ce1-bca9-0b78d03ff653
+		summarizeBy: sum
+		sourceColumn: new_cases_per_million_7_day_avg_right
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_deaths_per_million_7_day_avg_right
+		dataType: double
+		lineageTag: 0da157ab-12a9-4e2d-a6b2-008b5670e5c6
+		summarizeBy: sum
+		sourceColumn: new_deaths_per_million_7_day_avg_right
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column new_deaths_per_100k_7_day_avg_right
+		dataType: double
+		lineageTag: 60eaee7d-a044-422e-a8e8-786ea4cd2e35
+		summarizeBy: sum
+		sourceColumn: new_deaths_per_100k_7_day_avg_right
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cfr
+		dataType: double
+		lineageTag: 5b6e137d-3a33-435b-92da-8823a4a1966f
+		summarizeBy: sum
+		sourceColumn: cfr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cfr_100_cases
+		dataType: double
+		lineageTag: 8f261413-a389-4fb6-99ed-848463753694
+		summarizeBy: sum
+		sourceColumn: cfr_100_cases
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cfr_short_term
+		dataType: string
+		lineageTag: 1d37d899-3108-4e38-b534-ebb2351042fd
+		summarizeBy: none
+		sourceColumn: cfr_short_term
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_100_total_cases
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ccc22c0-c407-43e1-bf5e-7632d8ce3dc1
+		summarizeBy: sum
+		sourceColumn: days_since_100_total_cases
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_5_total_deaths
+		dataType: int64
+		formatString: 0
+		lineageTag: c2931bd7-5a91-4c5f-936c-e5292ea02e25
+		summarizeBy: sum
+		sourceColumn: days_since_5_total_deaths
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_1_total_cases_per_million
+		dataType: int64
+		formatString: 0
+		lineageTag: b1433baa-eef9-4d8b-a768-35c5423d0f00
+		summarizeBy: sum
+		sourceColumn: days_since_1_total_cases_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_0_1_total_deaths_per_million
+		dataType: int64
+		formatString: 0
+		lineageTag: b7b3c3f7-9d5b-4f10-a309-e218dbef866d
+		summarizeBy: sum
+		sourceColumn: days_since_0_1_total_deaths_per_million
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_100_total_cases_and_5m_pop
+		dataType: int64
+		formatString: 0
+		lineageTag: f0f91ba6-c750-46cb-b1f6-bd1d4641932d
+		summarizeBy: sum
+		sourceColumn: days_since_100_total_cases_and_5m_pop
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_deaths_last12m
+		dataType: string
+		lineageTag: 7415feb3-3441-443f-988c-cc40328848ca
+		summarizeBy: none
+		sourceColumn: total_deaths_last12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_deaths_per_100k_last12m
+		dataType: string
+		lineageTag: 70af27f3-b4a4-4871-b1ed-5467e1a0f19c
+		summarizeBy: none
+		sourceColumn: total_deaths_per_100k_last12m
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_deaths_per_million_last12m
+		dataType: string
+		lineageTag: 22a27430-4f4f-407b-bf8f-386880fd602e
+		summarizeBy: none
+		sourceColumn: total_deaths_per_million_last12m
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cases_deaths = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://catalog.ourworldindata.org/garden/covid/latest/cases_deaths/cases_deaths.csv"),[Delimiter=",", Columns=40, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"country", type text}, {"date", type date}, {"new_cases", Int64.Type}, {"total_cases", Int64.Type}, {"new_deaths", Int64.Type}, {"total_deaths", Int64.Type}, {"weekly_cases", Int64.Type}, {"weekly_deaths", Int64.Type}, {"weekly_pct_growth_cases", type number}, {"weekly_pct_growth_deaths", type number}, {"biweekly_cases", Int64.Type}, {"biweekly_deaths", Int64.Type}, {"biweekly_pct_growth_cases", type number}, {"biweekly_pct_growth_deaths", type number}, {"new_cases_per_million", type number}, {"new_deaths_per_million", type number}, {"total_cases_per_million", type number}, {"total_deaths_per_million", type number}, {"weekly_cases_per_million", type number}, {"weekly_deaths_per_million", type number}, {"biweekly_cases_per_million", type number}, {"biweekly_deaths_per_million", type number}, {"total_deaths_per_100k", type number}, {"new_deaths_per_100k", type number}, {"new_cases_7_day_avg_right", type number}, {"new_deaths_7_day_avg_right", type number}, {"new_cases_per_million_7_day_avg_right", type number}, {"new_deaths_per_million_7_day_avg_right", type number}, {"new_deaths_per_100k_7_day_avg_right", type number}, {"cfr", type number}, {"cfr_100_cases", type number}, {"cfr_short_term", type text}, {"days_since_100_total_cases", Int64.Type}, {"days_since_5_total_deaths", Int64.Type}, {"days_since_1_total_cases_per_million", Int64.Type}, {"days_since_0_1_total_deaths_per_million", Int64.Type}, {"days_since_100_total_cases_and_5m_pop", Int64.Type}, {"total_deaths_last12m", type text}, {"total_deaths_per_100k_last12m", type text}, {"total_deaths_per_million_last12m", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each true),
+				    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows","Micronesia (country)","Micronesia",Replacer.ReplaceText,{"country"}),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Replaced Value", {{"new_cases", 0}}),
+				    #"Replaced Errors1" = Table.ReplaceErrorValues(#"Replaced Errors", {{"new_deaths", 0}}),
+				    #"Replaced Errors2" = Table.ReplaceErrorValues(#"Replaced Errors1", {{"total_cases", 0}}),
+				    #"Replaced Errors3" = Table.ReplaceErrorValues(#"Replaced Errors2", {{"total_deaths", 0}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Replaced Errors3", each [cfr] >= 0 and [cfr] <= 100)
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

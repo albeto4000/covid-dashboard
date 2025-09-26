@@ -1,0 +1,51 @@
+table Country_Comparison_Filter
+	isHidden
+	lineageTag: d460b447-207f-46ac-a7c1-528449572465
+
+	column Country_Comparison_Filter
+		isHidden
+		lineageTag: 730254da-3294-4e40-a9cb-ea0f3da934d9
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Country_Comparison_Filter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Country_Comparison_Filter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country_Comparison_Filter Fields'
+		isHidden
+		lineageTag: eb7232ee-8bfe-472b-bf94-5165e0d6f746
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Country_Comparison_Filter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country_Comparison_Filter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 8d32c2b8-f743-418b-b945-033e038166c8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Country_Comparison_Filter = calculated
+		mode: import
+		source =
+				{
+				    ("Income Group", NAMEOF('countries'[Income_Group]), 0),
+				    ("Region", NAMEOF('countries'[Region]), 1),
+				    ("Name", NAMEOF('countries'[Name]), 2)
+				}
+
+	annotation PBI_Id = 33e462c334914f4b9c2c22a9ddfb4323
+

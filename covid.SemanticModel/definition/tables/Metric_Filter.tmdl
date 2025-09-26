@@ -1,0 +1,52 @@
+table Metric_Filter
+	isHidden
+	lineageTag: d99711f2-71b5-40ab-bd47-54b70d033450
+
+	column Metric_Filter
+		isHidden
+		lineageTag: 34639838-c794-4066-a6a1-9c016d68237d
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Metric_Filter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Metric_Filter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric_Filter Fields'
+		isHidden
+		lineageTag: 3d28586b-634d-4204-aca3-3dd922a62fd2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Metric_Filter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric_Filter Order'
+		isHidden
+		formatString: 0
+		lineageTag: ee4ce27b-bbdb-415b-8d71-fd6f984be160
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metric_Filter = calculated
+		mode: import
+		source =
+				{
+				    ("New Cases Per Million", NAMEOF('_Measures'[Avg_Cases]), 0),
+				    ("New Deaths Per 100k", NAMEOF('_Measures'[Avg_Deaths]), 1),
+				    ("New Vaccinations Per Million", NAMEOF('_Measures'[Avg_Vaccinations]), 2),
+				    ("New Hospitalizations Per Million", NAMEOF('_Measures'[Avg_Hospitalizations]), 3)
+				}
+
+	annotation PBI_Id = 244bcf3b031d4973bccc67fc7dc2ad39
+

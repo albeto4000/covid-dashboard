@@ -1,0 +1,102 @@
+table DateTable
+	lineageTag: 57bb544b-5c9a-4457-8584-8b498e8f87bd
+
+	column Date
+		formatString: General Date
+		lineageTag: 2da68209-04be-409a-8030-7de4224fbcc2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 4d5bc7c2-d455-4bc3-afd8-132dd46ebded
+			defaultHierarchy: LocalDateTable_902cf98e-004e-4ca6-97ef-abce9a2dfeb4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: f47ba53c-ff45-454a-9f0c-331f387d2700
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		formatString: 0
+		lineageTag: 1503bd92-01d1-4983-84e4-0db4beaf55c5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		lineageTag: 3fa873f6-182c-40fc-a6c5-169be7c727c8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 2d31b66b-626c-413d-baae-50dd0b276260
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		formatString: 0
+		lineageTag: 8604e46a-47c5-470f-afc7-333d4eb882b3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		lineageTag: 3e2dea9b-e924-438c-a419-89c302adf884
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekEnding
+		formatString: General Date
+		lineageTag: 9e9e1645-0820-4dc9-97c7-1078491e0323
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WeekEnding]
+
+		variation Variation
+			isDefault
+			relationship: fd3c107b-2c5b-4162-a14c-fcd03bde6e62
+			defaultHierarchy: LocalDateTable_c190f750-cfa2-4229-8f6a-590057e84272.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source =
+				
+				VAR MinDate = MIN( 'cases_deaths'[date] )
+				VAR MaxDate = MAX( 'cases_deaths'[date] )
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR( MinDate, MaxDate ),
+				    "Year", YEAR( [Date] ),
+				    "MonthNumber", MONTH( [Date] ),
+				    "MonthName", FORMAT( [Date], "MMM" ),
+				    "Quarter", "Q" & CEILING( MONTH( [Date] ) / 3, 1 ),
+				    "DayOfWeek", WEEKDAY( [Date], 2 ), // 2 for Monday as the first day of the week
+				    "DayName", FORMAT( [Date], "DDD" ),
+				    "WeekEnding", [Date] - WEEKDAY( [Date], 2 ) + 7 // Calculate the end of the week (Sunday)
+				)
+
+	annotation PBI_Id = 26069cabad054a1ab1ddec825d87e5d5
+

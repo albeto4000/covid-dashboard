@@ -1,0 +1,97 @@
+table oxcgrt_policy
+	lineageTag: 9ef6a610-5300-4685-b734-4aeac1f2e5d7
+
+	column Policy
+		dataType: string
+		lineageTag: ff8e8b60-6cad-4fe8-a38d-3e7d10d3aad3
+		summarizeBy: none
+		sourceColumn: Policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: dae63af4-416e-4364-a941-17f37a38ff4f
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 50060bf7-43e7-44c1-85ff-32bd9d438d6a
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d14ad809-bebc-499c-9eb4-1879525d7dd2
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Policy Class'
+		dataType: string
+		lineageTag: cc376328-0c19-48db-b2c0-e0b0477ff097
+		summarizeBy: none
+		sourceColumn: Policy Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column Label
+		dataType: string
+		lineageTag: 9a0c2d69-1b45-4a20-8488-d0457c677d1c
+		summarizeBy: none
+		sourceColumn: Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort_Order
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b3ca354-e3f6-425d-ad7b-b691a64fe717
+		summarizeBy: none
+		sourceColumn: Sort_Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition oxcgrt_policy = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://catalog.ourworldindata.org/garden/covid/latest/oxcgrt_policy/oxcgrt_policy.csv"),[Delimiter=",", Columns=31, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"country", type text}, {"date", type date}, {"c1m_school_closing", Int64.Type}, {"c2m_workplace_closing", Int64.Type}, {"c3m_cancel_public_events", Int64.Type}, {"c4m_restrictions_on_gatherings", Int64.Type}, {"c5m_close_public_transport", Int64.Type}, {"c6m_stay_at_home_requirements", Int64.Type}, {"c7m_restrictions_on_internal_movement", Int64.Type}, {"c8ev_international_travel_controls", Int64.Type}, {"e1_income_support", Int64.Type}, {"e2_debt_contract_relief", Int64.Type}, {"e3_fiscal_measures", Int64.Type}, {"e4_international_support", Int64.Type}, {"h1_public_information_campaigns", Int64.Type}, {"h2_testing_policy", Int64.Type}, {"h3_contact_tracing", Int64.Type}, {"h4_emergency_investment_in_healthcare", Int64.Type}, {"h5_investment_in_vaccines", Int64.Type}, {"h6m_facial_coverings", Int64.Type}, {"h7_vaccination_policy", Int64.Type}, {"v2a_vaccine_availability__summary", Int64.Type}, {"v2b_vaccine_age_eligibility_availability_age_floor__general_population_summary", type text}, {"v2c_vaccine_age_eligibility_availability_age_floor__at_risk_summary", type text}, {"stringency_index", type number}, {"containment_health_index", type number}, {"v2_vaccine_availability__summary", Int64.Type}, {"v2_pregnant_people", type text}, {"stringency_index_nonvax", type number}, {"stringency_index_vax", type number}, {"stringency_index_weighted_average", type number}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","Cote d'Ivoire","Côte d’Ivoire",Replacer.ReplaceText,{"country"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Hong Kong","Hong Kong SAR, China",Replacer.ReplaceText,{"country"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Macao","Macao SAR, China",Replacer.ReplaceText,{"country"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","Taiwan","Taiwan, China",Replacer.ReplaceText,{"country"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","East Timor","Timor-Leste",Replacer.ReplaceText,{"country"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value4",{"containment_health_index", "stringency_index_nonvax", "stringency_index_vax"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Removed Columns",{"country", "date", "c1m_school_closing", "c2m_workplace_closing", "c3m_cancel_public_events", "c4m_restrictions_on_gatherings", "c5m_close_public_transport", "c6m_stay_at_home_requirements", "c7m_restrictions_on_internal_movement", "c8ev_international_travel_controls", "e1_income_support", "e2_debt_contract_relief", "e3_fiscal_measures", "e4_international_support", "h1_public_information_campaigns", "h2_testing_policy", "h3_contact_tracing", "h4_emergency_investment_in_healthcare", "h5_investment_in_vaccines", "h6m_facial_coverings", "h7_vaccination_policy", "v2a_vaccine_availability__summary", "v2b_vaccine_age_eligibility_availability_age_floor__general_population_summary", "v2c_vaccine_age_eligibility_availability_age_floor__at_risk_summary", "v2_vaccine_availability__summary", "v2_pregnant_people", "stringency_index", "stringency_index_weighted_average"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns",{"v2_pregnant_people", "v2a_vaccine_availability__summary", "v2b_vaccine_age_eligibility_availability_age_floor__general_population_summary", "v2c_vaccine_age_eligibility_availability_age_floor__at_risk_summary", "v2_vaccine_availability__summary", "stringency_index", "stringency_index_weighted_average"}),
+				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Removed Columns1", {"country", "date"}, "Attribute", "Value"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Unpivoted Columns",{{"Attribute", "Policy"}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Renamed Columns", "Policy", Splitter.SplitTextByEachDelimiter({"_"}, QuoteStyle.Csv, false), {"Policy.1", "Policy.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Policy.1", type text}, {"Policy.2", type text}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type1",{{"Policy.2", "Policy"}}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Renamed Columns1","_"," ",Replacer.ReplaceText,{"Policy"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Replaced Value5",{{"Policy", Text.Proper, type text}}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Capitalized Each Word",{{"Policy.1", "Policy Class"}, {"date", "Date"}, {"country", "Country"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns2", {"Policy", "Value"}, oxcgrt_codes, {"Policy_Name", "Value"}, "OXCGRT_Codes", JoinKind.LeftOuter),
+				    #"Expanded OXCGRT_Codes" = Table.ExpandTableColumn(#"Merged Queries", "OXCGRT_Codes", {"Label", "Sort_Order"}, {"OXCGRT_Codes.Label", "OXCGRT_Codes.Sort_Order"}),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Expanded OXCGRT_Codes",{{"OXCGRT_Codes.Label", "Label"}, {"OXCGRT_Codes.Sort_Order", "Sort_Order"}})
+				in
+				    #"Renamed Columns3"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

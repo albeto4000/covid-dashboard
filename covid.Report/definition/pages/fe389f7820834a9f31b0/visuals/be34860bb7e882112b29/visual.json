@@ -1,0 +1,219 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "be34860bb7e882112b29",
+  "position": {
+    "x": 0,
+    "y": 85.677153879125584,
+    "z": 0,
+    "height": 521.08564080582937,
+    "width": 1279.5391341620232
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "countries"
+                        }
+                      },
+                      "Hierarchy": "Region Hierarchy"
+                    }
+                  },
+                  "Level": "Region"
+                }
+              },
+              "queryRef": "countries.Region Hierarchy.Region",
+              "nativeQueryRef": "Region Hierarchy Region"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "cases_deaths"
+                        }
+                      },
+                      "Property": "new_cases"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(cases_deaths.new_cases)",
+              "nativeQueryRef": "Sum of new_cases"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "countries"
+                        }
+                      },
+                      "Property": "Name"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(countries.Name)",
+              "nativeQueryRef": "First Name"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "cases_deaths"
+                        }
+                      },
+                      "Property": "total_cases_per_million"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(cases_deaths.total_cases_per_million)",
+              "nativeQueryRef": "Average of total_cases_per_million"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "cases_deaths"
+                        }
+                      },
+                      "Property": "total_deaths_per_100k"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(cases_deaths.total_deaths_per_100k)",
+              "nativeQueryRef": "Sum of total_deaths_per_100k"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "countries"
+                    }
+                  },
+                  "Property": "Longitude"
+                }
+              },
+              "queryRef": "Sum(countries.Longitude)",
+              "nativeQueryRef": "Longitude"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "countries"
+                    }
+                  },
+                  "Property": "Latitude"
+                }
+              },
+              "queryRef": "Sum(countries.Latitude)",
+              "nativeQueryRef": "Latitude"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "mapStyles": [
+        {
+          "properties": {
+            "mapTheme": {
+              "expr": {
+                "Literal": {
+                  "Value": "'canvasLight'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mapControls": [
+        {
+          "properties": {
+            "showZoomButtons": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showLassoButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "geocodingCulture": {
+              "expr": {
+                "Literal": {
+                  "Value": "'en-US'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

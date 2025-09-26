@@ -1,0 +1,37 @@
+expression countries_coordinates =
+		let
+		    Source = Csv.Document(File.Contents(FolderPath & "\countries_coordinates.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"country", type text}, {"latitude", type number}, {"longitude", type number}, {"name", type text}}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","Hong Kong","Hong Kong SAR, China",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","U.S. Virgin Islands","United States Virgin Islands",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Taiwan","Taiwan, China",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","Palestinian Territories","Palestine",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","Macedonia [FYROM]","North Macedonia",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Macau","Macao SAR, China",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","Czech Republic","Czechia",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","Congo [Republic]","Congo",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7","Congo [DRC]","Democratic Republic of Congo",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value9" = Table.ReplaceValue(#"Replaced Value8","Côte d'Ivoire","Côte d’Ivoire",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value10" = Table.ReplaceValue(#"Replaced Value9","Jersey","Channel Islands",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value11" = Table.ReplaceValue(#"Replaced Value10","Saint","St.",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value12" = Table.ReplaceValue(#"Replaced Value11","Myanmar [Burma]","Myanmar",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value13" = Table.ReplaceValue(#"Replaced Value12","Swaziland","Eswatini",Replacer.ReplaceText,{"name"}),
+		    #"Replaced Value14" = Table.ReplaceValue(#"Replaced Value13","Netherlands Antilles","Curacao",Replacer.ReplaceText,{"name"}),
+		    #"Reordered Columns" = Table.ReorderColumns(#"Replaced Value14",{"name", "country", "latitude", "longitude"}),
+		    #"Sorted Rows" = Table.Sort(#"Reordered Columns",{{"name", Order.Ascending}})
+		in
+		    #"Sorted Rows"
+	lineageTag: 0a318018-dab7-4abf-9996-a1b02678ec71
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression FolderPath = "C:\Users\Matt\Documents\data" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=false]
+	lineageTag: bf877bba-24d0-4279-999a-96636158f412
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

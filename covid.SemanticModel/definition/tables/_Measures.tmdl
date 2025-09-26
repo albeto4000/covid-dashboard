@@ -1,0 +1,67 @@
+table _Measures
+	lineageTag: 7f356170-3df9-4a9b-8499-584dd4c30492
+
+	measure Avg_Cases = AVERAGE(cases_deaths[new_cases_per_million])
+		lineageTag: 0eb9c1ee-6469-4357-b4e7-676d15ca1623
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Avg_Deaths = AVERAGE(cases_deaths[new_deaths_per_100k])
+		lineageTag: 4a2dd040-b892-4e2c-a19c-054454533363
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Avg_Vaccinations = AVERAGE(vaccinations_global[daily_vaccinations_smoothed_per_million])
+		lineageTag: 4bb67d46-25e2-49fc-b4e2-e2d78db2acf1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Avg_Hospitalizations = AVERAGE(hospital[daily_occupancy_hosp_per_1m])
+		lineageTag: 1a436510-3952-4f5c-803e-a37a5f06f9e3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Cases per Million by Policy' =
+			
+			AVERAGEX (
+			    VALUES ( oxcgrt_policy ),
+			    CALCULATE (
+			        AVERAGE ( cases_deaths[new_cases_per_million] )
+			    )
+			)
+		lineageTag: a4c0fbee-bfcd-44f2-8513-392be7bae540
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Cases per Million by Policy' = ```
+			
+			SUMX( 
+			    VALUES ( oxcgrt_policy ),
+			    CALCULATE (
+			        SUM( ( cases_deaths[new_cases_per_million] )
+			    )
+			))
+			```
+		lineageTag: 0d0fa92b-4375-4017-af12-90e999591584
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: 53d558c9-4075-4cea-bdd7-73e12935f1c1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = feef10697e0d4da883bfeed927fda918
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":null}
+
+	annotation 277cc1b9-af89-4597-8e15-cacc25c0886b = To use special characters in a calculated table name, enclose the entire name in brackets ( [] ) and add a ] to any closing brackets in the name.
+

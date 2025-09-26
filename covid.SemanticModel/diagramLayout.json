@@ -1,0 +1,151 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1714.9311919211782,
+        "y": 23356.425988101208
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2697.6533466703468,
+            "y": 23692.144861956691
+          },
+          "nodeIndex": "cases_deaths",
+          "nodeLineageTag": "603d87cd-9a74-4764-b2f5-9aef57be967c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 2642.6175009552103,
+            "y": 24072.687730016682
+          },
+          "nodeIndex": "countries",
+          "nodeLineageTag": "557059b4-79f0-4981-a732-c7fe145dd320",
+          "size": {
+            "height": 367.56955686173023,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 2970.7814160568091,
+            "y": 23665.133238502454
+          },
+          "nodeIndex": "vaccinations_global",
+          "nodeLineageTag": "59591786-74f9-47ba-83d2-df59cb4551e4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 3290.2519246687407,
+            "y": 23673.203450326859
+          },
+          "nodeIndex": "Country_Comparison_Filter",
+          "nodeLineageTag": "d460b447-207f-46ac-a7c1-528449572465",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 3285.4635033061568,
+            "y": 23405.535130913366
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "7f356170-3df9-4a9b-8499-584dd4c30492",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 3293.1905898306982,
+            "y": 23851.948635170149
+          },
+          "nodeIndex": "Metric_Filter",
+          "nodeLineageTag": "d99711f2-71b5-40ab-bd47-54b70d033450",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2369.0667457738095,
+            "y": 23684.465264625178
+          },
+          "nodeIndex": "hospital",
+          "nodeLineageTag": "1e086f46-9803-41da-9464-6e2e27cc4c3b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2682.8667615160948,
+            "y": 23334.689102636828
+          },
+          "nodeIndex": "DateTable",
+          "nodeLineageTag": "57bb544b-5c9a-4457-8584-8b498e8f87bd",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2085.9035902387768,
+            "y": 23704.682897858707
+          },
+          "nodeIndex": "oxcgrt_policy",
+          "nodeLineageTag": "9ef6a610-5300-4685-b734-4aeac1f2e5d7",
+          "size": {
+            "height": 231.70525090190131,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1942.060308633042,
+            "y": 23466.859883240664
+          },
+          "nodeIndex": "oxcgrt_codes",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 55.59917313492241,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

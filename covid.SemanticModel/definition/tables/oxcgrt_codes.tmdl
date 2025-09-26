@@ -1,0 +1,68 @@
+table oxcgrt_codes
+	isHidden
+	lineageTag: 5a82132f-c352-4023-8ab8-e5a3fbe11062
+
+	column Policy_Name
+		dataType: string
+		isHidden
+		lineageTag: aa017677-b654-4aae-b1b4-15dc1ba53ebe
+		summarizeBy: none
+		sourceColumn: Policy_Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 826fbd3d-56da-4732-b065-8f132e534550
+		summarizeBy: none
+		sourceColumn: Value
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Label
+		dataType: string
+		isHidden
+		lineageTag: 75e07fa8-cb5f-4e16-a642-9dff33f1b5de
+		summarizeBy: none
+		sourceColumn: Label
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort_Order
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c78f212-253d-4a6b-8068-df23ef125624
+		summarizeBy: none
+		sourceColumn: Sort_Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition oxcgrt_codes = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(FolderPath & "\OXCGRT_Codes.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Policy_Name", type text}, {"Value", Int64.Type}, {"Label", type text}, {"", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{""}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Columns","Workspace Closing","Workplace Closing",Replacer.ReplaceText,{"Policy_Name"}),
+				    #"Sorted Rows" = Table.Sort(#"Replaced Value",{{"Policy_Name", Order.Ascending}, {"Value", Order.Ascending}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 0, 1, Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "Sort_Order"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

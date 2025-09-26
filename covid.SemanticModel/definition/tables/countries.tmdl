@@ -1,0 +1,130 @@
+table countries
+	lineageTag: 557059b4-79f0-4981-a732-c7fe145dd320
+
+	measure 'Selected Name' = SELECTEDVALUE(countries[Name], "No selection")
+		lineageTag: bc687a5c-61e0-4954-bb0d-afc64fec87d5
+
+	column Region
+		dataType: string
+		lineageTag: 66673284-8d41-44fb-a365-ae844ed6ac4c
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 48cd9bf9-46ed-4606-8a3a-d8bf63176061
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: 5108a8e1-b064-497b-82f4-88c7e6c23961
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Income_Group
+		dataType: string
+		lineageTag: c7e8a8b7-2df4-49f8-988d-daec13e15736
+		summarizeBy: none
+		sourceColumn: Income_Group
+		sortByColumn: Income_Rank
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: b17e2f98-4574-40b9-832e-8938f8c33527
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitude
+		dataType: double
+		lineageTag: e36593d9-e91b-49b1-85ad-4563b6dc268b
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Income_Rank
+		dataType: string
+		lineageTag: ff138b11-7972-463f-a198-b96d47ea5302
+		summarizeBy: none
+		sourceColumn: Income_Rank
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Region Hierarchy'
+		lineageTag: 39a289eb-36f8-4c3d-8307-4c93b75ea290
+
+		level Region
+			lineageTag: 8468a655-09d6-426c-bf52-19d784765392
+			column: Region
+
+		level Name
+			lineageTag: 2ea4f6a8-200e-4f75-b0af-5109c61073a6
+			column: Name
+
+	partition countries = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(FolderPath & "\countries_world_bank.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Filtered Rows1" = Table.SelectRows(#"Promoted Headers", each ([Region] <> null)),
+				    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows1",{{"Economy", "Name"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns",", The","",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Brunei Darussalam","Brunei",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Cabo Verde","Cape Verde",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","Congo, Dem. Rep.","Democratic Republic of Congo",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","Congo, Rep.","Congo",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Curaçao","Curacao",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","Egypt, Arab Rep.","Egypt",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","Iran, Islamic Rep.","Iran",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7","Kyrgyz Republic","Kyrgyzstan",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value9" = Table.ReplaceValue(#"Replaced Value8","Korea, Dem. People's Rep.","North Korea",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value10" = Table.ReplaceValue(#"Replaced Value9","Korea, Rep.","South Korea",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value11" = Table.ReplaceValue(#"Replaced Value10","Lao PDR","Laos",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value12" = Table.ReplaceValue(#"Replaced Value11","Türkiye","Turkey",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value13" = Table.ReplaceValue(#"Replaced Value12","Yemen, Rep.","Yemen",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value14" = Table.ReplaceValue(#"Replaced Value13","West Bank and Gaza","Palestine",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value15" = Table.ReplaceValue(#"Replaced Value14","Virgin Islands (U.S.)","United States Virgin Islands",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value16" = Table.ReplaceValue(#"Replaced Value15","Venezuela, RB","Venezuela",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value17" = Table.ReplaceValue(#"Replaced Value16","Syrian Arab Republic","Syria",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value18" = Table.ReplaceValue(#"Replaced Value17","St. Vincent and the Grenadines","Saint Vincent and the Grenadines",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value19" = Table.ReplaceValue(#"Replaced Value18","St. Martin (French part)","Saint Martin",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value20" = Table.ReplaceValue(#"Replaced Value19","Sint Maarten (Dutch part)","Saint Martin",Replacer.ReplaceText,{"Name"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Replaced Value20", {"Name"}),
+				    #"Replaced Value21" = Table.ReplaceValue(#"Removed Duplicates","Russian Federation","Russia",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value22" = Table.ReplaceValue(#"Replaced Value21","Micronesia, Fed. Sts.","Micronesia",Replacer.ReplaceText,{"Name"}),
+				    #"Replaced Value23" = Table.ReplaceValue(#"Replaced Value22","Slovak Republic","Slovakia",Replacer.ReplaceText,{"Name"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value23",{"Lending category"}),
+				    #"Replaced Value24" = Table.ReplaceValue(#"Removed Columns","Puerto Rico (U.S.)","Puerto Rico",Replacer.ReplaceText,{"Name"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Replaced Value24", {"Name"}, countries_coordinates, {"name"}, "countries_coordinates", JoinKind.LeftOuter),
+				    #"Expanded countries_coordinates" = Table.ExpandTableColumn(#"Merged Queries", "countries_coordinates", {"latitude", "longitude"}, {"latitude", "longitude"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Expanded countries_coordinates",{{"latitude", "Latitude"}, {"longitude", "Longitude"}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Renamed Columns1",{{"Income group", Text.Proper, type text}}),
+				    #"Replaced Value25" = Table.ReplaceValue(#"Capitalized Each Word"," Income","",Replacer.ReplaceText,{"Income group"}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Replaced Value25",{{"Income group", "Income_Group"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns2", "Income_Rank", each if [Income_Group] = "High" then 0 else if [Income_Group] = "Upper Middle" then 1 else if [Income_Group] = "Middle" then 2 else if [Income_Group] = "Lower Middle" then 3 else 4)
+				in
+				    #"Added Custom"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

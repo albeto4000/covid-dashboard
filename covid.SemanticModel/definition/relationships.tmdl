@@ -1,0 +1,46 @@
+relationship 4d5bc7c2-d455-4bc3-afd8-132dd46ebded
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateTable.Date
+	toColumn: LocalDateTable_902cf98e-004e-4ca6-97ef-abce9a2dfeb4.Date
+
+relationship fd3c107b-2c5b-4162-a14c-fcd03bde6e62
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DateTable.WeekEnding
+	toColumn: LocalDateTable_c190f750-cfa2-4229-8f6a-590057e84272.Date
+
+relationship 81227d32-7628-e743-22f8-daced6bd3c4f
+	fromColumn: cases_deaths.date
+	toColumn: DateTable.Date
+
+relationship 0267cbba-df9b-cd5f-036b-f4ef7da5d4b7
+	fromColumn: vaccinations_global.date
+	toColumn: DateTable.Date
+
+relationship be7a5c36-4881-687d-7a5b-116b8a9994d3
+	fromColumn: hospital.date
+	toColumn: DateTable.Date
+
+relationship 55285fe2-8a24-0b38-3cdd-243079a5ebd5
+	fromColumn: oxcgrt_policy.Date
+	toColumn: DateTable.Date
+
+relationship AutoDetected_ae6717d0-c065-40fb-bc4b-ce397db73da8
+	fromColumn: oxcgrt_policy.Sort_Order
+	toColumn: oxcgrt_codes.Sort_Order
+
+relationship 58fb393d-933f-1de5-562b-5804d036a9e4
+	fromColumn: oxcgrt_policy.Country
+	toColumn: countries.Name
+
+relationship 84f49430-1aaf-1173-d86e-8d14c85c7396
+	fromColumn: hospital.country
+	toColumn: countries.Name
+
+relationship 96bc0b37-5954-f1cb-b0ae-ab50f39541c8
+	fromColumn: cases_deaths.country
+	toColumn: countries.Name
+
+relationship 34b84339-2d38-0caf-8d36-78857d0661ed
+	fromColumn: vaccinations_global.country
+	toColumn: countries.Name
+
