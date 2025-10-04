@@ -8,6 +8,14 @@
   		<!-- Bootswatch CSS -->
 		<link rel="stylesheet" href="css/bootstrap.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @media (max-width: 767.98px) {
+                .custom-sm-flex { display: flex !important; }
+            }
+            @media (min-width: 768px) {
+                .custom-md-flex { display: flex !important; }
+            }
+        </style>
     </head>
     <body>
         <script src="nav.js"></script>
@@ -23,7 +31,7 @@
             <section>
                 <h2>Pages</h1>
                 <!-- md-xl nav bar (one row of seven btns) -->
-                <div class="d-md-flex d-sm-none justify-content-center mb-2 ">
+                <div class="d-none custom-md-flex justify-content-center mb-2 ">
                     <button class="btn btn-outline-dark active btn-sm mx-1">Daily Statistics</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Country Comparison</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Outbreak Map</button>
@@ -33,13 +41,13 @@
                     <button class="btn btn-outline-dark btn-sm mx-1">Policy Map</button>
                 </div>
                 <!-- xs-sm nav bar (two rows of four/three buttons) -->
-                <div class="d-sm-flex d-md-none justify-content-center mb-2 ">
+                <div class="d-none custom-sm-flex justify-content-center mb-2 ">
                     <button class="btn btn-outline-dark active btn-sm mx-1">Daily Statistics</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Country Comparison</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Outbreak Map</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Total Cases Map</button>
                 </div>
-                <div class="d-sm-flex d-md-none justify-content-center mb-2 ">
+                <div class="d-none custom-sm-flex justify-content-center mb-2">
                     <button class="btn btn-outline-dark btn-sm mx-1">Mitigation Policies</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Policy Proportions</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Policy Map</button>
