@@ -21,7 +21,8 @@
 
             <section>
                 <h2>Pages</h1>
-                <div id="dashboard-nav" class="d-flex justify-content-center mb-2">
+                <!-- md-xl nav bar (one row of seven btns) -->
+                <div class="d-md-flex d-sm-none justify-content-center mb-2 ">
                     <button class="btn btn-outline-dark active btn-sm mx-1">Daily Statistics</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Country Comparison</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Outbreak Map</button>
@@ -30,7 +31,28 @@
                     <button class="btn btn-outline-dark btn-sm mx-1">Policy Proportions</button>
                     <button class="btn btn-outline-dark btn-sm mx-1">Policy Map</button>
                 </div>
-                <img id="dashboard-img" src="images/daily_statistics.jpg" class="w-100 overflow-hidden" />
+                <!-- xs-sm nav bar (two rows of four/three buttons) -->
+                <div class="d-sm-flex d-md-none justify-content-center mb-2 ">
+                    <button class="btn btn-outline-dark active btn-sm mx-1">Daily Statistics</button>
+                    <button class="btn btn-outline-dark btn-sm mx-1">Country Comparison</button>
+                    <button class="btn btn-outline-dark btn-sm mx-1">Outbreak Map</button>
+                    <button class="btn btn-outline-dark btn-sm mx-1">Total Cases Map</button>
+                </div>
+                <div class="d-sm-flex d-md-none justify-content-center mb-2 ">
+                    <button class="btn btn-outline-dark btn-sm mx-1">Mitigation Policies</button>
+                    <button class="btn btn-outline-dark btn-sm mx-1">Policy Proportions</button>
+                    <button class="btn btn-outline-dark btn-sm mx-1">Policy Map</button>
+                </div>
+                <!-- Dashboard Content (img/desc) -->
+                <div class="row" id="dashboard-content">
+                    <div class="col col-sm-12 col-md-8">
+                        <img id="dashboard-img" class="w-100" />
+                    </div>
+                    <div class="col col-sm-12 col-md-4">
+                        <p id="dashboard-desc"></p>
+                    </div>
+                </div>
+                
             </section>
 
             <section class="my-4">
@@ -49,14 +71,31 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script>
+            page_desc = {
+                "daily_statistics": "The Daily Statistics page displays an overview of new cases, deaths, hospital occupancies, and vaccinations over time. Slicers on the right allow users to filter by region, country income group, and country name. A bookmark allows users to view area plots of running totals.",
+                "country_comparison": "The Country Comparison page enables users to compare metrics of interest between income groups, regions, and countries. A parameter slicer allows users to select which metric to visualize, and a bookmark creates a subplot for each selected country using small multiples.",
+                "outbreak_map": "The Outbreak Map page visualizes COVID \"hot zones\", or regions of high transmission. Each country is a darker shade of red, depending on its total new cases. A slicer at the bottom allows users to select a date to measure new cases on, and a bookmark changes the metric from 'Total Cases' to 'Total Cases Per Million Citizens' to account for different population sizes.",
+                "total_cases_map": "A user can view the Total Cases Map to visualize each countries' total cases over a selected time frame. Users can set the start and end dates through the slicer at the bottom. The bubble over each country grows in size depending on the number of total cases measured. The color of each bubble reflects the country's region.",
+                "mitigation_policies": "The OXCGRT dataset measures what policies each country put in place to mitigate the spread of COVID-19. Users can view the efficacy of each policy on the Mitigation Policies page. Each bar represents the average cases per million in countries with the given policy. A slicer on the right allows users to select specific countries/regions, and a slicer at the bottom allows users to set the time frame.",
+                "policy_proportions": "Countries changed their policies in response to rises and falls in new cases. Users can view the proportion of countries employing various policies on the Policy Proportions page, and compare it to a graph of new cases, deaths, vaccinations, and hospitalizations to understand how different policies affected different metrics.",
+                "policy_map": "The policy map page shows which countries employed which policies on any given date."
+            }
+
             $(document).ready(function(){
+                $('#dashboard-img').prop('src', 'images/daily_statistics.jpg');
+                $('#dashboard-desc').text(page_desc['daily_statistics']);
+
                 $(".btn").click(function(){
                     $(".btn").removeClass("active");
                     $(this).addClass("active");
+                    
+                    page = $(this).text().toLowerCase().replaceAll(" ", "_")
+                    img_src = "images/" + page + ".jpg";
 
-                    img_src = "images/" + $(this).text().toLowerCase().replaceAll(" ", "_") + ".jpg";
-                    $("#dashboard-img").fadeOut("fast", function(){
-                        $("#dashboard-img").prop("src", img_src).fadeIn("fast");
+                    $("#dashboard-content").fadeOut("fast", function(){
+                        $("#dashboard-img").prop("src", img_src);
+                        $('#dashboard-desc').text(page_desc[page]);
+                        $("#dashboard-content").fadeIn();
                     });
                 });
             })
